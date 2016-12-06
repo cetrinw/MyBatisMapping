@@ -1,0 +1,31 @@
+package ${packageName}.entity;
+
+import java.io.Serializable;
+
+/**
+ * Created by ${author} on ${now?string("yyyy-MM-dd HH:mm:ss")}
+ * 实体类
+ */
+public class ${tableData.tableName?cap_first} implements Serializable{
+ <#if tableData.columnDatas??>
+ 	<#list tableData.columnDatas as columns>
+    private ${columns.columnClassName} ${columns.columnName};
+         </#list>
+     </#if>
+
+    public ${tableData.tableName}(){
+    }
+
+ <#if tableData.columnDatas??>
+  	<#list tableData.columnDatas as columns>
+    public ${columns.columnClassName} get${columns.columnName?cap_first}(){
+        return this.${columns.columnName};
+    }
+
+    public void set${columns.columnName?cap_first}(${columns.columnClassName} ${columns.columnName}){
+        this.columns.columnName = columns.columnName;
+    }
+
+      </#list>
+  </#if>
+}
