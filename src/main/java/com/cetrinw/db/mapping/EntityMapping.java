@@ -1,6 +1,6 @@
 package com.cetrinw.db.mapping;
 
-import com.cetrinw.common.Constants;
+import com.cetrinw.common.DBConstants;
 import com.cetrinw.db.table.entity.ColumnData;
 
 import java.util.ArrayList;
@@ -21,26 +21,31 @@ public class EntityMapping {
 
         String type = data.getColumnType();
 
-        if (type.equals(Constants.O_DATE)) {
-            data.setColumnClassName(Constants.J_DATE);
-        } else if (type.equals(Constants.O_VARCHAR2)) {
-            data.setColumnClassName(Constants.J_STRING);
-        } else if (type.equals(Constants.O_CHAR)) {
+        if (type.equalsIgnoreCase(DBConstants.O_DATE)) {
+            data.setColumnClassName(DBConstants.J_DATE);
+        } else if (type.equalsIgnoreCase(DBConstants.O_VARCHAR2)) {
+            data.setColumnClassName(DBConstants.J_STRING);
+            data.setMybatisType(DBConstants.M_VARCHAR);
+        } else if (type.equalsIgnoreCase(DBConstants.O_CHAR)) {
             if (data.getPrecision() > 1) {
-                data.setColumnClassName(Constants.J_STRING);
+                data.setColumnClassName(DBConstants.J_STRING);
             } else {
-                data.setColumnClassName(Constants.J_CHAR);
+                data.setColumnClassName(DBConstants.J_CHAR);
             }
-        } else if (type.equals(Constants.O_NUMBER)) {
+        } else if (type.equalsIgnoreCase(DBConstants.O_NUMBER)) {
             if (data.getScale() > 0) {
                 if (data.getScale() < 6) {
-                    data.setColumnClassName(Constants.J_FOLAT);
+                    data.setColumnClassName(DBConstants.J_FOLAT);
                 } else {
-                    data.setColumnClassName(Constants.J_DOUBLE);
+                    data.setColumnClassName(DBConstants.J_DOUBLE);
                 }
             } else {
-                data.setColumnClassName(Constants.J_INT);
+                data.setColumnClassName(DBConstants.J_INT);
             }
+            data.setMybatisType(DBConstants.M_DECIMAL);
+        }else{
+            data.setColumnClassName(type);
+            data.setMybatisType(type);
         }
     }
 
@@ -58,4 +63,5 @@ public class EntityMapping {
             newList.add(data);
         }
     }
+
 }

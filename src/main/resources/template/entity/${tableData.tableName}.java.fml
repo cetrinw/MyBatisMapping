@@ -6,15 +6,17 @@ import java.io.Serializable;
  * Created by ${author} on ${now?string("yyyy-MM-dd HH:mm:ss")}
  * 实体类
  */
-public class ${tableData.tableName?cap_first} implements Serializable{
- <#if tableData.columnDatas??>
- 	<#list tableData.columnDatas as columns>
-    private ${columns.columnClassName} ${columns.columnName};
-         </#list>
-     </#if>
+public class ${tableData.tableName} implements Serializable{
 
     public ${tableData.tableName}(){
     }
+
+ <#if tableData.columnDatas??>
+ 	<#list tableData.columnDatas as columns>
+  	//${columns.comment}
+    private ${columns.columnClassName} ${columns.columnName};
+         </#list>
+     </#if>
 
  <#if tableData.columnDatas??>
   	<#list tableData.columnDatas as columns>

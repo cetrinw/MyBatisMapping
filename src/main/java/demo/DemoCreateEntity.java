@@ -9,7 +9,7 @@ import com.cetrinw.freemark.BootStrap;
 public class DemoCreateEntity {
 
     public static void main(String[] args) {
-        BootStrap bootstrap = new BootStrap("PR_PROJECT_INFO");
+        BootStrap bootstrap = new BootStrap("house_building");
 
         bootstrap.buildEntity();
     }

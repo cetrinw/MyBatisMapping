@@ -17,24 +17,14 @@ public abstract class DBHelper {
      * @return
      */
     protected Connection getConnection(boolean autoCommit) {
-
-        try {
-            Connection conn = ConnectionUtil.getInstance().getConnection();
-            conn.setAutoCommit(autoCommit);
-
-            return conn;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return null;
+        return ConnectionUtil.getInstance().getConnection();
     }
 
     protected Connection getConnection() {
         return getConnection(true);
     }
 
-    protected PreparedStatement getPreparedStatement(Connection conn,String sql){
+    protected PreparedStatement getPreparedStatement(Connection conn, String sql) {
         try {
             return conn.prepareStatement(sql);
         } catch (SQLException e) {

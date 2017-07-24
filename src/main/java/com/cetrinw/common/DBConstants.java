@@ -4,7 +4,7 @@ package com.cetrinw.common;
  * Created by Cetrin Wang on 2016/11/17.
  * 常量类
  */
-public class Constants {
+public class DBConstants {
 
     /**
      * Java数据类型
@@ -24,4 +24,9 @@ public class Constants {
     public final static String O_NUMBER ="NUMBER";
     public final static String O_CHAR ="CHAR";
 
+    /**
+     * Mybatis JDBCType数据类型
+     */
+    public final static String M_VARCHAR="VARCHAR";
+    public final static String M_DECIMAL="DECIMAL";
 }

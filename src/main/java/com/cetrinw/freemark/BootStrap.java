@@ -27,4 +27,12 @@ public class BootStrap {
         TableData tableData = this.selectColumnData.getMateInfo(this.tableName);
         this.fillTemplate.fillEntity(tableData);
     }
+
+    /**
+     * 构建实体
+     */
+    public void buildMapper(){
+        TableData tableData = this.selectColumnData.getMateInfo(this.tableName);
+        this.fillTemplate.fillMapper(tableData);
+    }
 }
